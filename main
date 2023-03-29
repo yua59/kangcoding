@@ -1,0 +1,6 @@
+import dice2
+
+N = int(input('주사위 던질 횟수를 입력하세요:'))
+dice1 = dice2.DiceProbability(N)
+dice1.calcProbability()
+dice1.printProbability()
