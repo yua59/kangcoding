@@ -1,0 +1,30 @@
+import random #random 불러오기
+
+class Dice:
+  def __init__(self): #무작위 주사위수값 초기화
+    self.result = 0
+    
+  def roll(self):
+    self.result = random.randint(1,6) #1~6까지의 정수를 무작위로 생성하고 self.result에 집어넣기
+    return self.result #랜덤으로 생성된 값 반환
+  
+class DiceProbability():
+  def __init__(self, num): #class 만들때 시작
+    self.num = num #입력된 값 저장
+    self.A= [] #리스트A 초기화
+    self.B = [] #리스트B 초기화
+    
+  def calcProbability(self):
+    for i in range(self.num):
+      self.A.append(Dice().roll()) #리스트 A에 다이스 class의 roll함수를 써서 1~6까지의 무작위 정수 추가
+    #self.arrA = [Dice().roll() for in range(self.num)]
+    for i in range(1,7):
+      self.B.append(self.A.count(i)/self.num) #번호별 비율을 계산해 리스트B에 저장
+     
+  def printProbability(self):
+    print('총횟수: %d' %self.num)
+
+    for i in range(1,7):
+      print('주사위 %d: %d 비율: %.3f' %(i, self.A.count(i), self.B[i-1]))
+      #print("주사위 {}: {}".format(i,self.A.count(i)),end='')
+      #print(" 비율:%.3f" %self.B[i-1])
